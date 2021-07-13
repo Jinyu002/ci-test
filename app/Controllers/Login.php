@@ -5,10 +5,14 @@ namespace App\Controllers;
 
 use App\Models\UsersModel;
 
+
 class Login extends BaseController
 {
     public function login()
     {
+        header("Content-Type: text/html;charset=utf-8");
+        header('Access-Control-Allow-Origin:*');
+
         $myusername = $_POST['username'];
         $mypassword = $_POST['password'];
 
@@ -56,32 +60,36 @@ class Login extends BaseController
             exit(json_encode($row));
         }
 
-        $mypassword = md5($mypassword); //md5加密密码
-        //$select = mysqli_select_db($con, "users");  //选择数据库表
-        //操作数据库表
-        $model = new UsersModel();
-        $result = $model->loginQuery($myusername,$mypassword);
-        $re = mysqli_num_rows($result);  //返回结果集的函数，若存在则返回1（一行结果集）
 
-        if ($re != 0) {
-            $value = $myusername;
-            setcookie("username", $value, time() + 3600 * 48);
-            $last_login = date("Y-m-d H:i:s"); //获取本地时间，用以更新上次登录时间
-            //操作数据库，更新上次登录时间
-            $result = $model->updateLogin($last_login,$myusername);
-            $row['status'] = "1";
-            $row['err'] = "0";
-            $row['msg'] = "登陆成功";
+
+            $mypassword = md5($mypassword); //md5加密密码
+            //$select = mysqli_select_db($con, "users");  //选择数据库表
+            //操作数据库表
+
+            $model = new \App\Models\UsersModel();
+            $result = $model->loginQuery($myusername, $mypassword);
+
+
+
+            if (count($result) > 0) {
+                $value = $myusername;
+                setcookie("username", $value, time() + 3600 * 48);
+                $last_login = date("Y-m-d H:i:s"); //获取本地时间，用以更新上次登录时间
+                //操作数据库，更新上次登录时间
+                $result = $model->updateLogin($last_login, $myusername);
+                $row['status'] = "1";
+                $row['err'] = "0";
+                $row['err'] = "登录成功";
+
+            } else {
+                //用户不存在数据库中
+                $row['status'] = "3";
+                $row['err'] = "fail";
+                $row['msg'] = "用户名或密码错误";
+            }
             exit(json_encode($row));
 
-        } else {
-            //用户不存在数据库中
-            $row['status'] = "3";
-            $row['err'] = "fail";
-            $row['msg'] = "用户名或密码错误";
-            exit(json_encode($row));
+
         }
-
-    }
 
 }

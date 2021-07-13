@@ -9,6 +9,8 @@ class Register extends BaseController
 {
     public function register()
     {
+        header("Content-Type: application/json;charset=utf-8");
+        header('Access-Control-Allow-Origin:*');
         $myusername = $_POST['username'];
         $mypassword = $_POST['password'];
         $myconfirm = $_POST['confirm'];
@@ -180,10 +182,10 @@ class Register extends BaseController
         }
 
         //查询用户名是否存在，存在则无法注册
-        $model = new UsersModel();
+        $model = new \App\Models\UsersModel();
         $result = $model->checkUsername($myusername);
-        $ru = mysqli_num_rows($result);
-        if ($ru != 0) {
+
+        if (count($result)> 0) {
             $row['status'] = "10";
             $row['err'] = "fail";
             $row['msg'] = "用户名已存在，请选择另外用户名";
@@ -199,18 +201,28 @@ class Register extends BaseController
         $result = $model->insert(array($myusername, $mynickname, $mypassword, $head, $myemail, $mybirthday, $mysex, $address, $last_login_at, $updated_at, $created));
 
         //检查是否将注册信息插入数据库
-        $flag = mysqli_affected_rows($con);
-        if ($flag > 0) {
+        $result = $model->checkUsername($myusername);
+        if(count($result)>0){
             $row['status'] = "1";
             $row['err'] = "0";
-            $row['msg'] = "注册成功";
-            exit(json_encode($row));
-        } else {
+           $row['msg'] = "注册成功";
+        }else{
             $row['status'] = "11";
-            $row['err'] = "false";
+           $row['err'] = "false";
             $row['msg'] = "数据库插入失败";
-            exit(json_encode($row));
+
         }
+        //$flag = mysqli_affected_rows($con);
+//        if ($flag > 0) {
+//            $row['status'] = "1";
+//            $row['err'] = "0";
+//            $row['msg'] = "注册成功";
+//        } else {
+//            $row['status'] = "11";
+//            $row['err'] = "false";
+//            $row['msg'] = "数据库插入失败";
+//        }
+        exit(json_encode($row));
     }
 
 
