@@ -1,6 +1,4 @@
 <?php
-
-
 namespace App\Controllers;
 
 use App\Models\UsersModel;
@@ -33,7 +31,6 @@ class Register extends BaseController
                 return false;
             }
         }
-
 
 //验证昵称
         function checknicknam($nickname)
@@ -185,7 +182,7 @@ class Register extends BaseController
         $model = new \App\Models\UsersModel();
         $result = $model->checkUsername($myusername);
 
-        if (count($result)> 0) {
+        if (count($result) > 0) {
             $row['status'] = "10";
             $row['err'] = "fail";
             $row['msg'] = "用户名已存在，请选择另外用户名";
@@ -202,13 +199,13 @@ class Register extends BaseController
 
         //检查是否将注册信息插入数据库
         $result = $model->checkUsername($myusername);
-        if(count($result)>0){
+        if (count($result) > 0) {
             $row['status'] = "1";
             $row['err'] = "0";
-           $row['msg'] = "注册成功";
-        }else{
+            $row['msg'] = "注册成功";
+        } else {
             $row['status'] = "11";
-           $row['err'] = "false";
+            $row['err'] = "false";
             $row['msg'] = "数据库插入失败";
 
         }
