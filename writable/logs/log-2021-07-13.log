@@ -1,0 +1,378 @@
+CRITICAL - 2021-07-13 03:04:14 --> Undefined index: username
+#0 D:\wamp64\www\ci-test\app\Controllers\Login.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'D:\\wamp64\\www\\c...', 12, Array)
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2021-07-13 03:08:38 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:08:38 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(64): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2021-07-13 03:08:48 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:08:48 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(64): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2021-07-13 03:09:33 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:09:33 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(64): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-07-13 03:09:47 --> Undefined index: username
+#0 D:\wamp64\www\ci-test\app\Controllers\Login.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'D:\\wamp64\\www\\c...', 12, Array)
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-07-13 03:10:11 --> Undefined index: username
+#0 D:\wamp64\www\ci-test\app\Controllers\Login.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'D:\\wamp64\\www\\c...', 12, Array)
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2021-07-13 03:13:06 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:13:06 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(64): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-07-13 03:13:24 --> Undefined index: username
+#0 D:\wamp64\www\ci-test\app\Controllers\Login.php(12): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'D:\\wamp64\\www\\c...', 12, Array)
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2021-07-13 03:14:58 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:14:58 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(66): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-07-13 03:15:15 --> Undefined index: username
+#0 D:\wamp64\www\ci-test\app\Controllers\Login.php(14): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'D:\\wamp64\\www\\c...', 14, Array)
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2021-07-13 03:16:02 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:16:02 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(66): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2021-07-13 03:17:59 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:17:59 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(67): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2021-07-13 03:19:30 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:19:30 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(68): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-07-13 03:21:19 --> Undefined index: username
+#0 D:\wamp64\www\ci-test\app\Controllers\Login.php(16): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'D:\\wamp64\\www\\c...', 16, Array)
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2021-07-13 03:23:10 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:23:10 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(68): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2021-07-13 03:23:48 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:23:48 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(69): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2021-07-13 03:25:19 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:25:19 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(68): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2021-07-13 03:25:28 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:25:28 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(68): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2021-07-13 03:25:29 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:25:29 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(68): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2021-07-13 03:25:29 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:25:29 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(68): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2021-07-13 03:25:29 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:25:29 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(68): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2021-07-13 03:25:34 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:25:34 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(68): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2021-07-13 03:30:14 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:30:14 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(68): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2021-07-13 03:31:48 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:31:48 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(70): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2021-07-13 03:32:09 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:32:09 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(70): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2021-07-13 03:33:27 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:33:27 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(70): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2021-07-13 03:35:18 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:35:18 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(71): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2021-07-13 03:36:21 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:36:21 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(70): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2021-07-13 03:36:36 --> Error connecting to the database: Access denied for user ''@'localhost' (using password: NO)
+CRITICAL - 2021-07-13 03:36:36 --> Unable to connect to the database.
+#0 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#1 D:\wamp64\www\ci-test\app\Models\UsersModel.php(55): CodeIgniter\Database\BaseConnection->query('select * from u...', Array)
+#2 D:\wamp64\www\ci-test\app\Controllers\Login.php(70): App\Models\UsersModel->loginQuery('jinyu', '3abf00fa61bfae2...')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-07-13 03:42:50 --> mysqli_num_rows() expects parameter 1 to be mysqli_result, array given
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli_num_rows...', 'D:\\wamp64\\www\\c...', 71, Array)
+#1 D:\wamp64\www\ci-test\app\Controllers\Login.php(71): mysqli_num_rows(Array)
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-07-13 03:44:34 --> mysqli_num_rows() expects parameter 1 to be mysqli_result, array given
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli_num_rows...', 'D:\\wamp64\\www\\c...', 71, Array)
+#1 D:\wamp64\www\ci-test\app\Controllers\Login.php(71): mysqli_num_rows(Array)
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-07-13 03:45:12 --> mysqli_num_rows() expects parameter 1 to be mysqli_result, array given
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli_num_rows...', 'D:\\wamp64\\www\\c...', 75, Array)
+#1 D:\wamp64\www\ci-test\app\Controllers\Login.php(75): mysqli_num_rows(Array)
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-07-13 03:46:46 --> mysqli_num_rows() expects parameter 1 to be mysqli_result, array given
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli_num_rows...', 'D:\\wamp64\\www\\c...', 75, Array)
+#1 D:\wamp64\www\ci-test\app\Controllers\Login.php(75): mysqli_num_rows(Array)
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Login->login()
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-07-13 04:03:06 --> Undefined index: username
+#0 D:\wamp64\www\ci-test\app\Controllers\Register.php(14): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'D:\\wamp64\\www\\c...', 14, Array)
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Register->register()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Register))
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-07-13 04:04:06 --> mysqli_num_rows() expects parameter 1 to be mysqli_result, array given
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli_num_rows...', 'D:\\wamp64\\www\\c...', 187, Array)
+#1 D:\wamp64\www\ci-test\app\Controllers\Register.php(187): mysqli_num_rows(Array)
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Register->register()
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Register))
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-07-13 04:04:54 --> count(): Parameter must be an array or an object that implements Countable
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'count(): Parame...', 'D:\\wamp64\\www\\c...', 188, Array)
+#1 D:\wamp64\www\ci-test\app\Controllers\Register.php(188): count(true)
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Register->register()
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Register))
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-07-13 04:05:19 --> count(): Parameter must be an array or an object that implements Countable
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'count(): Parame...', 'D:\\wamp64\\www\\c...', 188, Array)
+#1 D:\wamp64\www\ci-test\app\Controllers\Register.php(188): count(true)
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Register->register()
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Register))
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-07-13 22:38:36 --> Cannot call constructor
+#0 D:\wamp64\www\ci-test\system\CodeIgniter.php(907): App\Controllers\Users->__construct()
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(421): CodeIgniter\CodeIgniter->createController()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-07-13 22:39:55 --> Cannot call constructor
+#0 D:\wamp64\www\ci-test\system\CodeIgniter.php(907): App\Controllers\Users->__construct()
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(421): CodeIgniter\CodeIgniter->createController()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-07-13 22:42:30 --> Cannot call constructor
+#0 D:\wamp64\www\ci-test\system\CodeIgniter.php(907): App\Controllers\Users->__construct()
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(421): CodeIgniter\CodeIgniter->createController()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-07-13 22:46:55 --> Cannot call constructor
+#0 D:\wamp64\www\ci-test\system\CodeIgniter.php(907): App\Controllers\Users->__construct()
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(421): CodeIgniter\CodeIgniter->createController()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-07-13 22:48:51 --> Cannot call constructor
+#0 D:\wamp64\www\ci-test\system\CodeIgniter.php(907): App\Controllers\Users->__construct()
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(421): CodeIgniter\CodeIgniter->createController()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-07-13 22:49:32 --> Cannot call constructor
+#0 D:\wamp64\www\ci-test\system\CodeIgniter.php(907): App\Controllers\Users->__construct()
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(421): CodeIgniter\CodeIgniter->createController()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-07-13 23:52:18 --> Too few arguments to function App\Controllers\BaseController::initController(), 0 passed in D:\wamp64\www\ci-test\app\Controllers\Users.php on line 11 and exactly 3 expected
+#0 D:\wamp64\www\ci-test\app\Controllers\Users.php(11): App\Controllers\BaseController->initController()
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(907): App\Controllers\Users->__construct()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(421): CodeIgniter\CodeIgniter->createController()
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}

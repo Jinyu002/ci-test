@@ -1,10 +1,12 @@
 <?php
+header("Content-type: text/html; charset=utf-8");
+header('Access-Control-Allow-Origin:*');
 
 // Valid PHP Version?
 $minPHPVersion = '7.2';
-if (version_compare(PHP_VERSION, $minPHPVersion, '<'))
-{
-	die("Your PHP version must be {$minPHPVersion} or higher to run CodeIgniter. Current version: " . PHP_VERSION);
+if (version_compare(PHP_VERSION, $minPHPVersion, '<')) {
+    die("Your PHP version must be {$minPHPVersion} or higher to run CodeIgniter. Current version: "
+        . PHP_VERSION);
 }
 unset($minPHPVersion);
 
@@ -25,14 +27,16 @@ chdir(__DIR__);
 
 // Load our paths config file
 // This is the line that might need to be changed, depending on your folder structure.
-require realpath(FCPATH . '../app/Config/Paths.php') ?: FCPATH . '../app/Config/Paths.php';
+require realpath(FCPATH . '../app/Config/Paths.php')
+    ?: FCPATH . '../app/Config/Paths.php';
 // ^^^ Change this if you move your application folder
 
 $paths = new Config\Paths();
 
 // Location of the framework bootstrap file.
-$bootstrap = rtrim($paths->systemDirectory, '\\/ ') . DIRECTORY_SEPARATOR . 'bootstrap.php';
-$app       = require realpath($bootstrap) ?: $bootstrap;
+$bootstrap = rtrim($paths->systemDirectory, '\\/ ') . DIRECTORY_SEPARATOR
+    . 'bootstrap.php';
+$app = require realpath($bootstrap) ?: $bootstrap;
 
 /*
  *---------------------------------------------------------------

@@ -1,0 +1,262 @@
+CRITICAL - 2021-07-14 00:15:01 --> Cannot call constructor
+#0 D:\wamp64\www\ci-test\system\CodeIgniter.php(907): App\Controllers\Users->__construct()
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(421): CodeIgniter\CodeIgniter->createController()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-07-14 00:15:01 --> Cannot call constructor
+#0 D:\wamp64\www\ci-test\system\CodeIgniter.php(907): App\Controllers\Users->__construct()
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(421): CodeIgniter\CodeIgniter->createController()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-07-14 00:15:02 --> Cannot call constructor
+#0 D:\wamp64\www\ci-test\system\CodeIgniter.php(907): App\Controllers\Users->__construct()
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(421): CodeIgniter\CodeIgniter->createController()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-07-14 00:15:02 --> Cannot call constructor
+#0 D:\wamp64\www\ci-test\system\CodeIgniter.php(907): App\Controllers\Users->__construct()
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(421): CodeIgniter\CodeIgniter->createController()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+ERROR - 2021-07-14 01:14:17 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Limi 1' at line 1 in D:\wamp64\www\ci-test\system\Database\MySQLi\Connection.php:314
+Stack trace:
+#0 D:\wamp64\www\ci-test\system\Database\MySQLi\Connection.php(314): mysqli->query('select username...')
+#1 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('select username...')
+#2 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('select username...')
+#3 D:\wamp64\www\ci-test\app\Models\UsersModel.php(37): CodeIgniter\Database\BaseConnection->query('select username...', Array)
+#4 D:\wamp64\www\ci-test\app\Controllers\Users.php(183): App\Models\UsersModel->checkUsername('tanjihan')
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#6 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#7 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2021-07-14 01:14:17 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Limi 1' at line 1
+#0 D:\wamp64\www\ci-test\system\Database\MySQLi\Connection.php(314): mysqli->query('select username...')
+#1 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(715): CodeIgniter\Database\MySQLi\Connection->execute('select username...')
+#2 D:\wamp64\www\ci-test\system\Database\BaseConnection.php(643): CodeIgniter\Database\BaseConnection->simpleQuery('select username...')
+#3 D:\wamp64\www\ci-test\app\Models\UsersModel.php(37): CodeIgniter\Database\BaseConnection->query('select username...', Array)
+#4 D:\wamp64\www\ci-test\app\Controllers\Users.php(183): App\Models\UsersModel->checkUsername('tanjihan')
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#6 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#7 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2021-07-14 01:29:48 --> Call to undefined method CodeIgniter\Database\MySQLi\Connection::insert()
+#0 D:\wamp64\www\ci-test\app\Controllers\Users.php(210): App\Models\UsersModel->insert(Array)
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-07-14 01:37:56 --> Call to undefined method CodeIgniter\Database\MySQLi\Connection::insert()
+#0 D:\wamp64\www\ci-test\app\Controllers\Users.php(210): App\Models\UsersModel->insert(Array)
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-07-14 01:38:16 --> Call to undefined method CodeIgniter\Database\MySQLi\Connection::insert()
+#0 D:\wamp64\www\ci-test\app\Controllers\Users.php(210): App\Models\UsersModel->insert(Array)
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-07-14 01:39:31 --> Call to undefined method CodeIgniter\Database\MySQLi\Connection::insert()
+#0 D:\wamp64\www\ci-test\app\Controllers\Users.php(210): App\Models\UsersModel->insertData(Array)
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-07-14 01:47:50 --> Allowed fields must be specified for model: App\Models\UsersModel
+#0 D:\wamp64\www\ci-test\system\BaseModel.php(1202): CodeIgniter\Database\Exceptions\DataException::forInvalidAllowedFields('App\\Models\\User...')
+#1 D:\wamp64\www\ci-test\system\BaseModel.php(729): CodeIgniter\BaseModel->doProtectFields(Array)
+#2 D:\wamp64\www\ci-test\system\Model.php(705): CodeIgniter\BaseModel->insert(Array, true)
+#3 D:\wamp64\www\ci-test\app\Controllers\Users.php(203): CodeIgniter\Model->insert(Array)
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#6 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-07-14 01:50:23 --> Call to undefined function App\Controllers\checkConfirm()
+#0 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-07-14 01:50:54 --> Allowed fields must be specified for model: App\Models\UsersModel
+#0 D:\wamp64\www\ci-test\system\BaseModel.php(1202): CodeIgniter\Database\Exceptions\DataException::forInvalidAllowedFields('App\\Models\\User...')
+#1 D:\wamp64\www\ci-test\system\BaseModel.php(729): CodeIgniter\BaseModel->doProtectFields(Array)
+#2 D:\wamp64\www\ci-test\system\Model.php(705): CodeIgniter\BaseModel->insert(Array, true)
+#3 D:\wamp64\www\ci-test\app\Controllers\Users.php(203): CodeIgniter\Model->insert(Array)
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#6 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-07-14 01:55:37 --> Allowed fields must be specified for model: App\Models\UsersModel
+#0 D:\wamp64\www\ci-test\system\BaseModel.php(1202): CodeIgniter\Database\Exceptions\DataException::forInvalidAllowedFields('App\\Models\\User...')
+#1 D:\wamp64\www\ci-test\system\BaseModel.php(729): CodeIgniter\BaseModel->doProtectFields(Array)
+#2 D:\wamp64\www\ci-test\system\Model.php(705): CodeIgniter\BaseModel->insert(Array, true)
+#3 D:\wamp64\www\ci-test\app\Controllers\Users.php(210): CodeIgniter\Model->insert(Array)
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#6 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-07-14 01:59:53 --> Allowed fields must be specified for model: App\Models\UsersModel
+#0 D:\wamp64\www\ci-test\system\BaseModel.php(1202): CodeIgniter\Database\Exceptions\DataException::forInvalidAllowedFields('App\\Models\\User...')
+#1 D:\wamp64\www\ci-test\system\BaseModel.php(729): CodeIgniter\BaseModel->doProtectFields(Array)
+#2 D:\wamp64\www\ci-test\system\Model.php(705): CodeIgniter\BaseModel->insert(Array, true)
+#3 D:\wamp64\www\ci-test\app\Controllers\Users.php(210): CodeIgniter\Model->insert(Array)
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#6 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-07-14 02:11:09 --> Allowed fields must be specified for model: App\Models\UsersModel
+#0 D:\wamp64\www\ci-test\system\BaseModel.php(1202): CodeIgniter\Database\Exceptions\DataException::forInvalidAllowedFields('App\\Models\\User...')
+#1 D:\wamp64\www\ci-test\system\BaseModel.php(729): CodeIgniter\BaseModel->doProtectFields(Array)
+#2 D:\wamp64\www\ci-test\system\Model.php(705): CodeIgniter\BaseModel->insert(Array, true)
+#3 D:\wamp64\www\ci-test\app\Controllers\Users.php(213): CodeIgniter\Model->insert(Array)
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#6 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-07-14 02:13:01 --> Call to undefined method CodeIgniter\Database\MySQLi\Connection::insert()
+#0 D:\wamp64\www\ci-test\app\Controllers\Users.php(213): App\Models\UsersModel->insertData(Array)
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-07-14 02:24:25 --> Call to undefined method CodeIgniter\Database\MySQLi\Connection::select()
+#0 D:\wamp64\www\ci-test\app\Controllers\Users.php(184): App\Models\UsersModel->checkUsername('zhang')
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-07-14 02:24:26 --> Call to undefined method CodeIgniter\Database\MySQLi\Connection::select()
+#0 D:\wamp64\www\ci-test\app\Controllers\Users.php(184): App\Models\UsersModel->checkUsername('zhang')
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-07-14 02:24:26 --> Call to undefined method CodeIgniter\Database\MySQLi\Connection::select()
+#0 D:\wamp64\www\ci-test\app\Controllers\Users.php(184): App\Models\UsersModel->checkUsername('zhang')
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-07-14 02:24:26 --> Call to undefined method CodeIgniter\Database\MySQLi\Connection::select()
+#0 D:\wamp64\www\ci-test\app\Controllers\Users.php(184): App\Models\UsersModel->checkUsername('zhang')
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-07-14 02:40:39 --> syntax error, unexpected '(', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$'
+#0 D:\wamp64\www\ci-test\system\Autoloader\Autoloader.php(274): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\wamp64\\www\\c...')
+#1 D:\wamp64\www\ci-test\system\Autoloader\Autoloader.php(228): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\User...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\User...')
+#3 D:\wamp64\www\ci-test\app\Controllers\Users.php(183): spl_autoload_call('App\\Models\\User...')
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#6 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-07-14 02:58:40 --> Class 'CodeIgniter\CodeIgniter\Controller' not found
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-07-14 03:01:32 --> Declaration of App\Controllers\Users::initController(App\Controllers\RequestInterface $request, App\Controllers\ResponseInterface $response, App\Controllers\LoggerInterface $logger) should be compatible with CodeIgniter\Controller::initController(CodeIgniter\HTTP\RequestInterface $request, CodeIgniter\HTTP\ResponseInterface $response, Psr\Log\LoggerInterface $logger)
+#0 D:\wamp64\www\ci-test\app\Controllers\Users.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Declaration of ...', 'D:\\wamp64\\www\\c...', 8, Array)
+#1 D:\wamp64\www\ci-test\system\Router\Router.php(562): include_once('D:\\wamp64\\www\\c...')
+#2 D:\wamp64\www\ci-test\system\Router\Router.php(170): CodeIgniter\Router\Router->autoRoute('Users/register')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(815): CodeIgniter\Router\Router->handle('Users/register')
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(384): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-07-14 03:01:33 --> Declaration of App\Controllers\Users::initController(App\Controllers\RequestInterface $request, App\Controllers\ResponseInterface $response, App\Controllers\LoggerInterface $logger) should be compatible with CodeIgniter\Controller::initController(CodeIgniter\HTTP\RequestInterface $request, CodeIgniter\HTTP\ResponseInterface $response, Psr\Log\LoggerInterface $logger)
+#0 D:\wamp64\www\ci-test\app\Controllers\Users.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Declaration of ...', 'D:\\wamp64\\www\\c...', 8, Array)
+#1 D:\wamp64\www\ci-test\system\Router\Router.php(562): include_once('D:\\wamp64\\www\\c...')
+#2 D:\wamp64\www\ci-test\system\Router\Router.php(170): CodeIgniter\Router\Router->autoRoute('Users/register')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(815): CodeIgniter\Router\Router->handle('Users/register')
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(384): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-07-14 03:01:42 --> Declaration of App\Controllers\Users::initController(App\Controllers\RequestInterface $request, App\Controllers\ResponseInterface $response, App\Controllers\LoggerInterface $logger) should be compatible with CodeIgniter\Controller::initController(CodeIgniter\HTTP\RequestInterface $request, CodeIgniter\HTTP\ResponseInterface $response, Psr\Log\LoggerInterface $logger)
+#0 D:\wamp64\www\ci-test\app\Controllers\Users.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Declaration of ...', 'D:\\wamp64\\www\\c...', 8, Array)
+#1 D:\wamp64\www\ci-test\system\Router\Router.php(562): include_once('D:\\wamp64\\www\\c...')
+#2 D:\wamp64\www\ci-test\system\Router\Router.php(170): CodeIgniter\Router\Router->autoRoute('Users/register')
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(815): CodeIgniter\Router\Router->handle('Users/register')
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(384): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#5 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-07-14 03:05:44 --> Cannot call constructor
+#0 D:\wamp64\www\ci-test\system\CodeIgniter.php(907): App\Controllers\Users->__construct()
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(421): CodeIgniter\CodeIgniter->createController()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-07-14 03:08:08 --> Undefined property: CodeIgniter\HTTP\IncomingRequest::$getPost
+#0 D:\wamp64\www\ci-test\app\Controllers\Users.php(23): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'D:\\wamp64\\www\\c...', 23, Array)
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-07-14 03:08:09 --> Undefined property: CodeIgniter\HTTP\IncomingRequest::$getPost
+#0 D:\wamp64\www\ci-test\app\Controllers\Users.php(23): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'D:\\wamp64\\www\\c...', 23, Array)
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-07-14 03:08:10 --> Undefined property: CodeIgniter\HTTP\IncomingRequest::$getPost
+#0 D:\wamp64\www\ci-test\app\Controllers\Users.php(23): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined prope...', 'D:\\wamp64\\www\\c...', 23, Array)
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-07-14 03:11:03 --> Illegal string offset 'sex'
+#0 D:\wamp64\www\ci-test\app\Controllers\Users.php(38): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string ...', 'D:\\wamp64\\www\\c...', 38, Array)
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-07-14 03:14:16 --> Illegal string offset 'sex'
+#0 D:\wamp64\www\ci-test\app\Controllers\Users.php(38): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal string ...', 'D:\\wamp64\\www\\c...', 38, Array)
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-07-14 03:24:38 --> Undefined index: username
+#0 D:\wamp64\www\ci-test\app\Controllers\Users.php(22): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index...', 'D:\\wamp64\\www\\c...', 22, Array)
+#1 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-07-14 03:28:25 --> Argument 2 passed to dot_array_search() must be of the type array, null given, called in D:\wamp64\www\ci-test\system\HTTP\IncomingRequest.php on line 360
+#0 D:\wamp64\www\ci-test\system\HTTP\IncomingRequest.php(360): dot_array_search('username', NULL)
+#1 D:\wamp64\www\ci-test\app\Controllers\Users.php(32): CodeIgniter\HTTP\IncomingRequest->getJsonVar('username')
+#2 D:\wamp64\www\ci-test\system\CodeIgniter.php(935): App\Controllers\Users->register()
+#3 D:\wamp64\www\ci-test\system\CodeIgniter.php(431): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#4 D:\wamp64\www\ci-test\system\CodeIgniter.php(332): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\wamp64\www\ci-test\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}

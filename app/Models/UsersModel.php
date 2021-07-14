@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-
 use CodeIgniter\Model;
 use mysql_xdevapi\Exception;
 
@@ -14,56 +13,45 @@ class UsersModel extends Model
     {
         parent::__construct();
         //创建数据库连接
-        $this->db = \Config\Database::connect();
-    }
-
-
-    function data()
-    {
-        $sql = "SELECT * FROM users";
-        return $this->db->query($sql)->getResult();
+        $this->db = \Config\Database::connect()->table('users');
     }
 
     //注册时插入数据
-    function insert($data = NULL, bool $returnID = true)
+    public function insertData($data = '', bool $returnID = true)
     {
-        if ($data != NULL) {
-            $sql = "INSERT INTO users " .
-                "(username,nickname, password,head,email,birthday,sex,address,last_login_at,updated_at,created_at) " .
-                "VALUES " .
-                "(?,?,?,?,?,?,?,?,?,?,?)";
-            return $this->db->query($sql, array($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[9], $data[10]));
+        if ($data != '') {
+            return $this->db->insert($data);
         }
         return false;
     }
 
     //用户名记录查询
-    function checkUsername($username = NULL)
+    public function checkUsername($username = '')
     {
-        if ($username != NULL) {
-            $sql = "select username from users where username = ?";
-            return $this->db->query($sql, array($username))->getResult();
+        if ($username != '') {
+            //$sql = "select username from users where username = ? Limit 1";
+            return $this->db->select('username')->where('username', $username)
+                ->get(0, 1)->getResult();
         }
         return false;
     }
 
     //登录查询用户名密码是否正确
-    function loginQuery($username = NULL, $password = NULL)
+    public function loginQuery($username = '', $password = '')
     {
-        if ($username != NULL && $password != NULL) {
-            $sql = "select * from users where username = ? and password = ?";
-            return $this->db->query($sql, array($username, $password))->getResult();
+        if ($username != '' && $password != '') {
+            return $this->db->select('username')->where('username', $username)
+                ->where('password', $password)->get(0, 1)->getResult();
         }
         return false;
     }
 
-    function updateLogin($last_login_at,$username){
-        if($last_login_at != NULL){
-            $sql = "UPDATE `users` SET `last_login_at`= ? WHERE `username`= ?";
-            return $this->db->query($sql,array($last_login_at,$username))->getResult();
+    public function updateLogin($last_login_at = '', $username = '')
+    {
+        if ($last_login_at != '') {
+            return $this->db->set('last_login_at', $last_login_at)
+                ->where('username', $username)->update();
         }
-
+        return false;
     }
-
-
 }
