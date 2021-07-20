@@ -3,14 +3,24 @@
 namespace App\Controllers;
 
 use App\Models\UsersModel;
+use App\Models\Administrators;
 use CodeIgniter\Controller;
+use CodeIgniter\HTTP\Request;
+use CodeIgniter\HTTP\RequestInterface;
+use Config\App;
+use Psr\Log\LoggerInterface;
 
 class Users extends Controller
 {
-
+    public function __construct()
+    {
+        //parent::__construct();
+        header("Content-type: text/html; charset=utf-8");
+        header('Access-Control-Allow-Origin:*');
+        date_default_timezone_set("Asia/Shanghai");
+    }
     public function register()
     {
-
         $myUsername = $this->request->getPost('username');
         $myPassword = $this->request->getPost('password');
         $myConfirm = $this->request->getPost('confirm');
@@ -164,13 +174,6 @@ class Users extends Controller
         }
 
         //连接数据库
-        $con = db_connect();
-        if (!$con) {
-            $row['status'] = "9";
-            $row['err'] = "fail";
-            $row['msg'] = "数据库未连接";
-            exit(json_encode($row));
-        }
 
         //查询用户名是否存在，存在则无法注册
         $model = new \App\Models\UsersModel();
@@ -187,6 +190,9 @@ class Users extends Controller
         $last_login_at = '';
         $updated_at = '';
         $myPassword = md5($myPassword);
+        $postNumber = 0;
+        $replyNumber = 0;
+        $status = 0;
         $created = date("Y-m-d H:i:s"); //获取本地时间，用以插入数据库创建时间
 
         try {
@@ -199,6 +205,9 @@ class Users extends Controller
                 'birthday'      => $myBirthday,
                 'sex'           => $mySex,
                 'address'       => $address,
+                'post_number'   => $postNumber,
+                'reply_number'  => $replyNumber,
+                'status'        => $status,
                 'last_login_at' => $last_login_at,
                 'updated_at'    => $updated_at,
                 'created_at'    => $created
@@ -264,11 +273,19 @@ class Users extends Controller
             exit(json_encode($row));
         }
 
-        $con = db_connect();
-        if (!$con) {
-            $row['status'] = "3";
-            $row['err'] = "fail";
-            $row['msg'] = "数据库未连接";
+        //管理员登录
+        $model1 = new \App\Models\Administrators();
+        $result1 = $model1->loginQuery($myUsername, $myPassword);
+        if (count($result1) > 0) {
+            $value = $myUsername;
+            setcookie("username", $value, time() + 3600 * 48);
+            $last_login = date("Y-m-d H:i:s", time() + 60 * 60);
+            //获取本地时间，用以更新上次登录时间
+            //操作数据库，更新上次登录时间
+            $result = $model1->updateLogin($last_login, $myUsername);
+            $row['status'] = "5";
+            $row['err'] = "0";
+            $row['msg'] = "管理员登录";
             exit(json_encode($row));
         }
 
@@ -288,13 +305,44 @@ class Users extends Controller
             $result = $model->updateLogin($last_login, $myUsername);
             $row['status'] = "1";
             $row['err'] = "0";
-            $row['err'] = $last_login;
+            $row['msg'] = $last_login;
         } else {
             //用户不存在数据库中
-            $row['status'] = "3";
+            $row['status'] = "4";
             $row['err'] = "fail";
             $row['msg'] = "用户名或密码错误";
         }
+        exit(json_encode($row));
+    }
+
+    public function number()
+    {
+        $username = $this->request->getPost('username');
+        $model = new \App\Models\UsersModel();
+        $result = $model->number($username);
+        $row['status'] = "1";
+        $row['err'] = "0";
+        $row['data'] = $result;
+        exit(json_encode($row));
+    }
+
+    public function listUsers()
+    {
+        $model = new \App\Models\UsersModel();
+        $result = $model->listUsers();
+        $row['status'] = "1";
+        $row['err'] = "0";
+        $row['data'] = $result;
+        exit(json_encode($row));
+    }
+
+    public function ban()
+    {
+        $id = $this->request->getPost('userId');
+        $model = new \App\Models\UsersModel();
+        $result = $model->ban($id);
+        $row['status'] = "1";
+        $row['err'] = "0";
         exit(json_encode($row));
     }
 

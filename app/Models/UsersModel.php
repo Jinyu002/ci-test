@@ -31,7 +31,7 @@ class UsersModel extends Model
         if ($username != '') {
             //$sql = "select username from users where username = ? Limit 1";
             return $this->db->select('username')->where('username', $username)
-                ->get(0, 1)->getResult();
+                ->get(1, 0)->getResult();
         }
         return false;
     }
@@ -41,7 +41,7 @@ class UsersModel extends Model
     {
         if ($username != '' && $password != '') {
             return $this->db->select('username')->where('username', $username)
-                ->where('password', $password)->get(0, 1)->getResult();
+                ->where('password', $password)->get(1, 0)->getResult();
         }
         return false;
     }
@@ -51,6 +51,66 @@ class UsersModel extends Model
         if ($last_login_at != '') {
             return $this->db->set('last_login_at', $last_login_at)
                 ->where('username', $username)->update();
+        }
+        return false;
+    }
+
+    public function idQuery($username = '')
+    {
+        if ($username != '') {
+            return $this->db->select('id')->where('username', $username)
+                ->get(1, 0)->getResultArray();
+        }
+        return false;
+    }
+
+    public function updatePost($id = '', $num = '')
+    {
+        if ($id != '' && $num != '') {
+            return $this->db->set('post_number', $num)->where('id', $id)
+                ->update();
+        }
+        return false;
+    }
+
+    public function updateReply($id = '', $num = '')
+    {
+        if ($id != '' && $num != '') {
+            return $this->db->set('reply_number', $num)->where('id', $id)
+                ->update();
+        }
+        return false;
+    }
+
+    public function number($username = '')
+    {
+        if ($username != '') {
+            return $this->db->select('post_number')->select('reply_number')->where('username', $username)
+                ->get(1, 0)->getResultArray();
+        }
+        return false;
+    }
+
+    public function listUsers(): array
+    {
+        return $this->db->select('id')->select('username')->select('nickname')
+            ->select('post_number')->select('reply_number')->select('status')->get()
+            ->getResultArray();
+    }
+
+    public function ban($id = '')
+    {
+        if ($id != '') {
+            return $this->db->set('status', 1)->where('id', $id)->update();
+        }
+        return false;
+    }
+
+    public function status($username = '')
+    {
+        if ($username != '') {
+            return $this->db->select('status')->where('username', $username)->get(1, 0)
+                ->getResultArray();
         }
         return false;
     }
