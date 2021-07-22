@@ -7,6 +7,8 @@ use App\Models\PublishModel;
 use App\Models\ReplyModel;
 use CodeIgniter\Controller;
 use CodeIgniter\Model;
+use WebGeeker\Validation\Validation;
+use WebGeeker\Validation\ValidationException;
 
 class Post extends Controller
 {
@@ -26,11 +28,20 @@ class Post extends Controller
         $content = $this->request->getPost('content');
         $created = date("Y-m-d H:i:s");
         $update = date("Y-m-d H:i:s");
+        try {
+            Validation::validate($this->request->getPost(), [
+                "username" => "Regexp:/^[a-zA-Z][a-zA-Z0-9_]{3,19}/",
+                "title" => "StrLenGeLe:1,50",
+                "content" => "StrLenGeLe:0,65535",
+            ]);
+        } catch (\Exception $e) {
+            $e->getMessage();
+            $row['status'] = '0';
+            $row['err'] = 'fail';
+            $row['msg'] = $e->getMessage();
+        }
         $str = trim($content); // 取得字串同时去掉头尾空格和空回车
-        //$str=str_replace("<br>","",$str); // 去掉<br>标签
-        //$str="<p>".trim($str); // 在文本头加入<p>
         $str = str_replace("\r\n", "<br>", $str); // 用p标签取代换行符
-        //$str.="</p>\n"; // 文本尾加入</p>
         $str = str_replace("<p></p>", "", $str); // 去除空段落
         $str = str_replace("\n", "", $str); // 去掉空行并连成一行
         $str = str_replace("</p>", "</p>\n", $str); //整理html代码
@@ -60,6 +71,21 @@ class Post extends Controller
                 'created_at'   => $created,
                 'updated_at'   => $update
             );
+            $validations = [
+                "users_id"     => "IntGe:1",
+                "username"     => "Regexp:/^[a-zA-Z][a-zA-Z0-9_]{3,19}/",
+                "title"        => "StrLenGeLe:1,50",
+                "content"      => "StrLenGeLe:1,65535",
+                "sequence"     => "StrLenGe:1",
+                "reply_number" => "IntIn:0",
+                "status"       => "IntIn:0",
+                "updated_at"   => "Date",
+                "created_at"   => "Date",
+            ];
+            try {
+                Validation::validate($post, $validations);
+            } catch (ValidationException $e) {
+            }
             $re = $model1->insertPost($post);
             if ($re != '') {
                 $result1 = $model1->postNumber($userid);
@@ -79,24 +105,42 @@ class Post extends Controller
     //将帖子在前端主页面显示
     public function listPost()
     {
-        $con = db_connect();
-
+        $page = $this->request->getPost('page');
+        try {
+            Validation::validate($this->request->getPost(), [
+                "page" => "IntGe:1",
+            ]);
+        } catch (\Exception $e) {
+            $e->getMessage();
+            $row['status'] = '0';
+            $row['err'] = 'fail';
+            $row['msg'] = $e->getMessage();
+        }
+        $page = 20 * ($page - 1);
         $model = new PublishModel();
-        $result = $model->queryData();
+        $result = $model->queryData($page);
+        $result1 = $model->statistics();
+        $totalPage = count($result1) / 20;
+        $totalPage = ceil($totalPage);
         $row['status'] = "1";
         $row['err'] = "0";
         $row['data'] = $result;
+        $row['totalPage'] = $totalPage;
         exit(json_encode($row));
     }
     //帖子详情
     public function post()
     {
         $id = $this->request->getPost('id');
-        $con = db_connect();
-        if (!$con) {
-            $row['status'] = "0";
-            $row['err'] = "数据库未连接";
-            exit(json_encode($row));
+        try {
+            Validation::validate($this->request->getPost(), [
+                "id" => "IntGe:1",
+            ]);
+        } catch (\Exception $e) {
+            $e->getMessage();
+            $row['status'] = '0';
+            $row['err'] = 'fail';
+            $row['msg'] = $e->getMessage();
         }
         $model = new PublishModel();
         $result = $model->postContent($id);
@@ -109,11 +153,15 @@ class Post extends Controller
     public function deletePost()
     {
         $id = $this->request->getPost('postId');
-        $con = db_connect();
-        if (!$con) {
-            $row['status'] = "0";
-            $row['err'] = "数据库未连接";
-            exit(json_encode($row));
+        try {
+            Validation::validate($this->request->getPost(), [
+                "postId" => "IntGe:1",
+            ]);
+        } catch (\Exception $e) {
+            $e->getMessage();
+            $row['status'] = '0';
+            $row['err'] = 'fail';
+            $row['msg'] = $e->getMessage();
         }
         $model = new PublishModel();
         $result = $model->postDelete($id);
@@ -126,11 +174,16 @@ class Post extends Controller
     {
         $content = $this->request->getPost('content');
         $id = $this->request->getPost('postId');
-        $con = db_connect();
-        if (!$con) {
-            $row['status'] = "0";
-            $row['err'] = "数据库未连接";
-            exit(json_encode($row));
+        try {
+            Validation::validate($this->request->getPost(), [
+                "postId" => "IntGe:1",
+                "content" => "StrLenGeLe:0,65535",
+            ]);
+        } catch (\Exception $e) {
+            $e->getMessage();
+            $row['status'] = '0';
+            $row['err'] = 'fail';
+            $row['msg'] = $e->getMessage();
         }
         $model = new PublishModel();
         $result = $model->editPost($content, $id);
@@ -143,6 +196,18 @@ class Post extends Controller
         $username = $this->request->getPost('username');
         $id = $this->request->getPost('postId');
         $content = $this->request->getPost('content');
+        try {
+            Validation::validate($this->request->getPost(), [
+                "username" => "Regexp:/^[a-zA-Z][a-zA-Z0-9_]{3,19}/",
+                "postId" =>"IntGe:1",
+                "content" => "StrLenGeLe:0,65535",
+            ]);
+        } catch (\Exception $e) {
+            $e->getMessage();
+            $row['status'] = '0';
+            $row['err'] = 'fail';
+            $row['msg'] = $e->getMessage();
+        }
         $created = date("Y-m-d H:i:s");
         $update = date("Y-m-d H:i:s");
         $str = trim($content); // 取得字串同时去掉头尾空格和空回车
@@ -153,7 +218,7 @@ class Post extends Controller
         $str = str_replace("<p></p>", "", $str); // 去除空段落
         $str = str_replace("\n", "", $str); // 去掉空行并连成一行
         $str = str_replace("</p>", "</p>\n", $str); //整理html代码
-        //连接数据库
+
         $model = new UsersModel();
         $model1 = new ReplyModel();
         $model2 = new PublishModel();
@@ -188,6 +253,20 @@ class Post extends Controller
                 'created_at' => $created,
                 'updated_at' => $update
             );
+            $validations = [
+                "post_id"    => "IntGe:1",
+                "floor"      => "IntGe:1",
+                "Users_id"   => "IntGe:1",
+                "username"   => "Regexp:/^[a-zA-Z][a-zA-Z0-9_]{3,19}/",
+                "content"    => "StrLenGeLe:1,65535",
+                "status"     => "IntIn:0",
+                "updated_at" => "Date",
+                "created_at" => "Date",
+            ];
+            try {
+                Validation::validate($reply, $validations);
+            } catch (ValidationException $e) {
+            }
             $re = $model1->insertReply($reply);
             if ($re != '') {
                 $result4 = $model1->number($userid);
@@ -208,6 +287,16 @@ class Post extends Controller
     public function listReply()
     {
         $id = $this->request->getPost('postId');
+        try {
+            Validation::validate($this->request->getPost(), [
+                "postId" =>"IntGe:1",
+            ]);
+        } catch (\Exception $e) {
+            $e->getMessage();
+            $row['status'] = '0';
+            $row['err'] = 'fail';
+            $row['msg'] = $e->getMessage();
+        }
         $con = db_connect();
         if (!$con) {
             $row['status'] = "0";
@@ -226,6 +315,16 @@ class Post extends Controller
     public function top()
     {
         $id = $this->request->getPost('postId');
+        try {
+            Validation::validate($this->request->getPost(), [
+                "postId" =>"IntGe:1",
+            ]);
+        } catch (\Exception $e) {
+            $e->getMessage();
+            $row['status'] = '0';
+            $row['err'] = 'fail';
+            $row['msg'] = $e->getMessage();
+        }
         $con = db_connect();
         if (!$con) {
             $row['status'] = "0";

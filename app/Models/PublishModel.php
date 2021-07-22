@@ -37,11 +37,18 @@ class PublishModel extends Model
         return false;
     }
 
-    public function queryData(): array
+    public function queryData($page): array
     {
         return $this->db->select('id')->select('username')->select('title')
-            ->select('created_at')->select('content')->select('sequence')->where('status', 0)->orderBy('sequence')
-            ->get(20, 0)->getResultArray();
+            ->select('created_at')->select('content')->select('sequence')
+            ->select('reply_number')->where('status', 0)->orderBy('sequence')
+            ->get(20, $page)->getResultArray();
+    }
+
+    public function statistics(): array
+    {
+        return $this->db->select()->where('status', 0)->orderBy('sequence')
+            ->get()->getResultArray();
     }
 
     public function postContent($id = '')

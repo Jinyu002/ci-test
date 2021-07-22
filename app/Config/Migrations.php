@@ -6,6 +6,7 @@ use CodeIgniter\Config\BaseConfig;
 
 class Migrations extends BaseConfig
 {
+    public $currentVersion = 20210721140537;
 	/**
 	 * --------------------------------------------------------------------------
 	 * Enable/Disable Migrations
@@ -52,4 +53,6 @@ class Migrations extends BaseConfig
 	 * @var string
 	 */
 	public $timestampFormat = 'Y-m-d-His_';
+
+
 }

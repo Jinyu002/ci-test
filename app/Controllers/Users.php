@@ -9,6 +9,8 @@ use CodeIgniter\HTTP\Request;
 use CodeIgniter\HTTP\RequestInterface;
 use Config\App;
 use Psr\Log\LoggerInterface;
+use WebGeeker\Validation\Validation;
+use WebGeeker\Validation\ValidationException;
 
 class Users extends Controller
 {
@@ -33,145 +35,164 @@ class Users extends Controller
         $myArea = $this->request->getPost('area');
         //拼接所在地
         $address = $myProvince . $myCity . $myArea;
+        try {
+            Validation::validate($this->request->getPost(), [
+                "username" => "Regexp:/^[a-zA-Z][a-zA-Z0-9_]{3,19}/",
+                "password" => "StrLenGeLe:6,27",
+                "nickname" => "StrLenGeLe:4,20",
+                "email"    => "Email",
+                "birthday" => "Date",
+                "sex"      => "IntIn:1,2",
+                "province" => "StrLenGeLe:1,100",
+                "city"     => "StrLenGeLe:1,100",
+                "area"     => "StrLenGeLe:1,100",
+            ]);
+        } catch (\Exception $e) {
+            $e->getMessage();
+            $row['status'] = '0';
+            $row['err'] = 'fail';
+            $row['msg'] = $e->getMessage();
+        }
+
 
         //后端参数校验
-        function preg_username($username)
-        {
-            if (preg_match("/^[a-zA-Z][a-zA-Z0-9_]{3,19}/", $username)) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        //验证昵称
-        function checkNickname($nickname)
-        {
-            $length = strlen($nickname);
-            if ($nickname != '' && $length >= 4 && $length <= 20) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        //验证密码
-        function checkPassword($password)
-        {
-            $length = strlen($password);
-            if ($length >= 6 && $length <= 27) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        //验证再次输入密码
-        function checkConfirm($confirm, $password)
-        {
-            if ($confirm == $password) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        //验证性别
-        function checkSex($sex)
-        {
-            if ($sex != '') {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-
-        //验证生日
-        function checkBirth($birth)
-        {
-            if ($birth != '') {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        //验证所在地
-        function checkLocation($location)
-        {
-            if ($location != '') {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        //验证邮箱
-        function preg_email($mail)
-        {
-            if (preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/", $mail)) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        if (!preg_username($myUsername)) {
-            $row['status'] = "0";
-            $row['err'] = "fail";
-            $row['msg'] = "用户名格式错误";
-            exit(json_encode($row));
-        }
-
-        if (!checkNickname($myNickname)) {
-            $row['status'] = "2";
-            $row['err'] = "fail";
-            $row['msg'] = "昵称格式错误";
-            exit(json_encode($row));
-        }
-
-        if (!checkPassword($myPassword)) {
-            $row['status'] = "3";
-            $row['err'] = "fail";
-            $row['msg'] = "密码格式错误";
-            exit(json_encode($row));
-        }
-
-        if (!checkConfirm($myConfirm, $myPassword)) {
-            $row['status'] = "4";
-            $row['err'] = "fail";
-            $row['msg'] = "两次输入密码不同";
-            exit(json_encode($row));
-        }
-
-        if (!checkSex($mySex)) {
-            $row['status'] = "5";
-            $row['err'] = "fail";
-            $row['msg'] = "性别未输入";
-            exit(json_encode($row));
-        }
-
-        if (!checkBirth($myBirthday)) {
-            $row['status'] = "6";
-            $row['err'] = "fail";
-            $row['msg'] = "生日未输入";
-            exit(json_encode($row));
-        }
-
-        if (!checkLocation($address)) {
-            $row['status'] = "7";
-            $row['err'] = "fail";
-            $row['msg'] = "所在地未输入";
-            exit(json_encode($row));
-        }
-
-        if (!preg_email($myEmail)) {
-            $row['status'] = "8";
-            $row['err'] = "fail";
-            $row['msg'] = "邮箱格式错误";
-            exit(json_encode($row));
-        }
+        //        function preg_username($username)
+        //        {
+        //            if (preg_match("/^[a-zA-Z][a-zA-Z0-9_]{3,19}/", $username)) {
+        //                return true;
+        //            } else {
+        //                return false;
+        //            }
+        //        }
+        //
+        //        //验证昵称
+        //        function checkNickname($nickname)
+        //        {
+        //            $length = strlen($nickname);
+        //            if ($nickname != '' && $length >= 4 && $length <= 20) {
+        //                return true;
+        //            } else {
+        //                return false;
+        //            }
+        //        }
+        //
+        //        //验证密码
+        //        function checkPassword($password)
+        //        {
+        //            $length = strlen($password);
+        //            if ($length >= 6 && $length <= 27) {
+        //                return true;
+        //            } else {
+        //                return false;
+        //            }
+        //        }
+        //
+        //        //验证再次输入密码
+        //        function checkConfirm($confirm, $password)
+        //        {
+        //            if ($confirm == $password) {
+        //                return true;
+        //            } else {
+        //                return false;
+        //            }
+        //        }
+        //
+        //        //验证性别
+        //        function checkSex($sex)
+        //        {
+        //            if ($sex != '') {
+        //                return true;
+        //            } else {
+        //                return false;
+        //            }
+        //        }
+        //
+        //
+        //        //验证生日
+        //        function checkBirth($birth)
+        //        {
+        //            if ($birth != '') {
+        //                return true;
+        //            } else {
+        //                return false;
+        //            }
+        //        }
+        //
+        //        //验证所在地
+        //        function checkLocation($location)
+        //        {
+        //            if ($location != '') {
+        //                return true;
+        //            } else {
+        //                return false;
+        //            }
+        //        }
+        //
+        //        //验证邮箱
+        //        function preg_email($mail)
+        //        {
+        //            if (preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/", $mail)) {
+        //                return true;
+        //            } else {
+        //                return false;
+        //            }
+        //        }
+        //
+        //        if (!preg_username($myUsername)) {
+        //            $row['status'] = "0";
+        //            $row['err'] = "fail";
+        //            $row['msg'] = "用户名格式错误";
+        //            exit(json_encode($row));
+        //        }
+        //
+        //        if (!checkNickname($myNickname)) {
+        //            $row['status'] = "2";
+        //            $row['err'] = "fail";
+        //            $row['msg'] = "昵称格式错误";
+        //            exit(json_encode($row));
+        //        }
+        //
+        //        if (!checkPassword($myPassword)) {
+        //            $row['status'] = "3";
+        //            $row['err'] = "fail";
+        //            $row['msg'] = "密码格式错误";
+        //            exit(json_encode($row));
+        //        }
+        //
+        //        if (!checkConfirm($myConfirm, $myPassword)) {
+        //            $row['status'] = "4";
+        //            $row['err'] = "fail";
+        //            $row['msg'] = "两次输入密码不同";
+        //            exit(json_encode($row));
+        //        }
+        //
+        //        if (!checkSex($mySex)) {
+        //            $row['status'] = "5";
+        //            $row['err'] = "fail";
+        //            $row['msg'] = "性别未输入";
+        //            exit(json_encode($row));
+        //        }
+        //
+        //        if (!checkBirth($myBirthday)) {
+        //            $row['status'] = "6";
+        //            $row['err'] = "fail";
+        //            $row['msg'] = "生日未输入";
+        //            exit(json_encode($row));
+        //        }
+        //
+        //        if (!checkLocation($address)) {
+        //            $row['status'] = "7";
+        //            $row['err'] = "fail";
+        //            $row['msg'] = "所在地未输入";
+        //            exit(json_encode($row));
+        //        }
+        //
+        //        if (!preg_email($myEmail)) {
+        //            $row['status'] = "8";
+        //            $row['err'] = "fail";
+        //            $row['msg'] = "邮箱格式错误";
+        //            exit(json_encode($row));
+        //        }
 
         //连接数据库
 
@@ -195,7 +216,6 @@ class Users extends Controller
         $status = 0;
         $created = date("Y-m-d H:i:s"); //获取本地时间，用以插入数据库创建时间
 
-        try {
             $da = array(
                 'username'      => $myUsername,
                 'nickname'      => $myNickname,
@@ -212,9 +232,28 @@ class Users extends Controller
                 'updated_at'    => $updated_at,
                 'created_at'    => $created
             );
-            $result = $model->insertData($da);
-        } catch (\ReflectionException $e) {
+        $validations =  [
+            "username" => "Regexp:/^[a-zA-Z][a-zA-Z0-9_]{3,19}/",
+            "password" => "StrLenGeLe:6,27",
+            "nickname" => "StrLenGeLe:4,20",
+            "head" => "StrLenGeLe:0",
+            "email"    => "Email",
+            "birthday" => "Date",
+            "sex"      => "IntIn:1,2",
+            "address" => "StrLenGeLe:1,100",
+            "post_number"     => "IntIn:0",
+            "reply_number"     => "IntIn:0",
+            "status"=>"IntIn:0",
+            "last_login_at" => "StrLenGeLe:0",
+            "updated_at"    => "StrLenGeLe:0",
+            "created_at"    => "Date",
+        ];
+        try {
+            Validation::validate($da, $validations);
+        } catch (ValidationException $e) {
         }
+        $result = $model->insertData($da);
+
 
         //检查是否将注册信息插入数据库
         $result = $model->checkUsername($myUsername);
@@ -247,31 +286,18 @@ class Users extends Controller
             }
         }
 
-        //校验密码
-        function checkPassword($password)
-        {
-            $length = strlen($password);
-            if ($length >= 6 && $length <= 27) {
-                return true;
-            } else {
-                return false;
-            }
+        try {
+            Validation::validate($this->request->getPost(), [
+                "username" => "Regexp:/^[a-zA-Z][a-zA-Z0-9_]{3,19}/",
+                "password" => "StrLenGeLe:6,27",
+            ]);
+        } catch (\Exception $e) {
+            $e->getMessage();
+            $row['status'] = '0';
+            $row['err'] = 'fail';
+            $row['msg'] = $e->getMessage();
         }
 
-        //对用户输入的数据进行参数校验
-        if (!preg_username($myUsername)) {
-            $row['status'] = "0";
-            $row['err'] = "fail";
-            $row['msg'] = "用户名格式错误";
-            exit(json_encode($row));
-        }
-
-        if (!checkpassword($myPassword)) {
-            $row['status'] = "2";
-            $row['err'] = "fail";
-            $row['msg'] = "请填写6-27位密码";
-            exit(json_encode($row));
-        }
 
         //管理员登录
         $model1 = new \App\Models\Administrators();
@@ -318,6 +344,16 @@ class Users extends Controller
     public function number()
     {
         $username = $this->request->getPost('username');
+        try {
+            Validation::validate($this->request->getPost(), [
+                "username" => "Regexp:/^[a-zA-Z][a-zA-Z0-9_]{3,19}/",
+            ]);
+        } catch (\Exception $e) {
+            $e->getMessage();
+            $row['status'] = '0';
+            $row['err'] = 'fail';
+            $row['msg'] = $e->getMessage();
+        }
         $model = new \App\Models\UsersModel();
         $result = $model->number($username);
         $row['status'] = "1";
@@ -339,6 +375,16 @@ class Users extends Controller
     public function ban()
     {
         $id = $this->request->getPost('userId');
+        try {
+            Validation::validate($this->request->getPost(), [
+                "userId" => "IntGe:0",
+            ]);
+        } catch (\Exception $e) {
+            $e->getMessage();
+            $row['status'] = '0';
+            $row['err'] = 'fail';
+            $row['msg'] = $e->getMessage();
+        }
         $model = new \App\Models\UsersModel();
         $result = $model->ban($id);
         $row['status'] = "1";
