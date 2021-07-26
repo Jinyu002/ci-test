@@ -3,10 +3,9 @@
 namespace App\Controllers;
 
 use App\Models\UsersModel;
-use App\Models\PublishModel;
+use App\Models\PostModel;
 use App\Models\ReplyModel;
 use CodeIgniter\Controller;
-use CodeIgniter\Model;
 use WebGeeker\Validation\Validation;
 use WebGeeker\Validation\ValidationException;
 
@@ -18,11 +17,16 @@ class Post extends Controller
         header('Access-Control-Allow-Origin:*');
         date_default_timezone_set("Asia/Shanghai");
     }
-    //发表帖子存入数据库
+
+    /**
+     * 发表的帖子存入数据库
+     *
+     * @return void
+     */
     public function publishPost()
     {
-        $model = new UsersModel();
-        $model1 = new PublishModel();
+        $user_model = new UsersModel();
+        $post_model = new PostModel();
         $username = $this->request->getPost('username');
         $title = $this->request->getPost('title');
         $content = $this->request->getPost('content');
@@ -31,8 +35,8 @@ class Post extends Controller
         try {
             Validation::validate($this->request->getPost(), [
                 "username" => "Regexp:/^[a-zA-Z][a-zA-Z0-9_]{3,19}/",
-                "title" => "StrLenGeLe:1,50",
-                "content" => "StrLenGeLe:0,65535",
+                "title"    => "StrLenGeLe:1,50",
+                "content"  => "StrLenGeLe:0,65535",
             ]);
         } catch (\Exception $e) {
             $e->getMessage();
@@ -46,22 +50,22 @@ class Post extends Controller
         $str = str_replace("\n", "", $str); // 去掉空行并连成一行
         $str = str_replace("</p>", "</p>\n", $str); //整理html代码
         //连接数据库
-        $result3 = $model->status($username);
-        $status = $result3[0]['status'];
+        $status_result = $user_model->status($username);
+        $status = $status_result[0]['status'];
         //账号封禁中
         if ($status == "1") {
             $row['status'] = "3";
             $row['err'] = "fail";
             $row['msg'] = "账号封禁中，无法发帖或回复";
         } else {
-            $result = $model->idQuery($username);
-            $userid = $result[0];
-            $re = $model1->idQuery();
-            $sequence = $re[0];
+            $id_result = $user_model->idQuery($username);
+            $userId = $id_result[0];
+            $postId_result = $post_model->idQuery();
+            $sequence = $postId_result[0];
             $reply_number = 0;
             $status = 0;
             $post = array(
-                'users_id'     => $userid,
+                'users_id'     => $userId,
                 'username'     => $username,
                 'title'        => $title,
                 'content'      => $str,
@@ -71,26 +75,14 @@ class Post extends Controller
                 'created_at'   => $created,
                 'updated_at'   => $update
             );
-            $validations = [
-                "users_id"     => "IntGe:1",
-                "username"     => "Regexp:/^[a-zA-Z][a-zA-Z0-9_]{3,19}/",
-                "title"        => "StrLenGeLe:1,50",
-                "content"      => "StrLenGeLe:1,65535",
-                "sequence"     => "StrLenGe:1",
-                "reply_number" => "IntIn:0",
-                "status"       => "IntIn:0",
-                "updated_at"   => "Date",
-                "created_at"   => "Date",
-            ];
-            try {
-                Validation::validate($post, $validations);
-            } catch (ValidationException $e) {
-            }
-            $re = $model1->insertPost($post);
-            if ($re != '') {
-                $result1 = $model1->postNumber($userid);
-                $post_num = count($result1);
-                $result2 = $model->updatePost($userid, $post_num);
+            $post_result = $post_model->insertPost($post);
+            if ($post_result != '') {
+                $postNumber_result = $post_model->postNumber($userId);
+                $post_num = count($postNumber_result);
+                $updatePost_result = $user_model->updatePost(
+                    $userId,
+                    $post_num
+                );
                 $row['status'] = "1";
                 $row['err'] = "0";
                 $row['msg'] = "发表成功";
@@ -102,7 +94,11 @@ class Post extends Controller
         }
         exit(json_encode($row));
     }
-    //将帖子在前端主页面显示
+
+    /**将帖子在主页显示
+     *
+     * @return void
+     */
     public function listPost()
     {
         $page = $this->request->getPost('page');
@@ -117,18 +113,22 @@ class Post extends Controller
             $row['msg'] = $e->getMessage();
         }
         $page = 20 * ($page - 1);
-        $model = new PublishModel();
-        $result = $model->queryData($page);
-        $result1 = $model->statistics();
-        $totalPage = count($result1) / 20;
+        $post_model = new PostModel();
+        $queryData_result = $post_model->queryData($page);
+        $statistics_result = $post_model->statistics();
+        $totalPage = count($statistics_result) / 20;
         $totalPage = ceil($totalPage);
         $row['status'] = "1";
         $row['err'] = "0";
-        $row['data'] = $result;
+        $row['data'] = $queryData_result;
         $row['totalPage'] = $totalPage;
         exit(json_encode($row));
     }
-    //帖子详情
+
+    /**帖子详情
+     *
+     * @return void
+     */
     public function post()
     {
         $id = $this->request->getPost('id');
@@ -142,14 +142,18 @@ class Post extends Controller
             $row['err'] = 'fail';
             $row['msg'] = $e->getMessage();
         }
-        $model = new PublishModel();
-        $result = $model->postContent($id);
+        $post_model = new PostModel();
+        $postContent_result = $post_model->postContent($id);
         $row['status'] = "1";
         $row['err'] = "0";
-        $row['data'] = $result;
+        $row['data'] = $postContent_result;
         exit(json_encode($row));
     }
 
+    /**删除帖子
+     *
+     * @return void
+     */
     public function deletePost()
     {
         $id = $this->request->getPost('postId');
@@ -163,20 +167,25 @@ class Post extends Controller
             $row['err'] = 'fail';
             $row['msg'] = $e->getMessage();
         }
-        $model = new PublishModel();
-        $result = $model->postDelete($id);
+        $post_model = new PostModel();
+        $update = date("Y-m-d H:i:s");
+        $post_result = $post_model->postDelete($update, $id);
         $row['status'] = "1";
         $row['err'] = "0";
         exit(json_encode($row));
     }
 
+    /**编辑帖子
+     *
+     * @return void
+     */
     public function editPost()
     {
         $content = $this->request->getPost('content');
         $id = $this->request->getPost('postId');
         try {
             Validation::validate($this->request->getPost(), [
-                "postId" => "IntGe:1",
+                "postId"  => "IntGe:1",
                 "content" => "StrLenGeLe:0,65535",
             ]);
         } catch (\Exception $e) {
@@ -185,12 +194,18 @@ class Post extends Controller
             $row['err'] = 'fail';
             $row['msg'] = $e->getMessage();
         }
-        $model = new PublishModel();
-        $result = $model->editPost($content, $id);
+        $post_model = new PostModel();
+        $update = date("Y-m-d H:i:s");
+        $post_result = $post_model->editPost($update, $content, $id);
         $row['status'] = "1";
         $row['err'] = "0";
         exit(json_encode($row));
     }
+
+    /**回复帖子
+     *
+     * @return void
+     */
     public function reply()
     {
         $username = $this->request->getPost('username');
@@ -199,8 +214,8 @@ class Post extends Controller
         try {
             Validation::validate($this->request->getPost(), [
                 "username" => "Regexp:/^[a-zA-Z][a-zA-Z0-9_]{3,19}/",
-                "postId" =>"IntGe:1",
-                "content" => "StrLenGeLe:0,65535",
+                "postId"   => "IntGe:1",
+                "content"  => "StrLenGeLe:0,65535",
             ]);
         } catch (\Exception $e) {
             $e->getMessage();
@@ -219,11 +234,11 @@ class Post extends Controller
         $str = str_replace("\n", "", $str); // 去掉空行并连成一行
         $str = str_replace("</p>", "</p>\n", $str); //整理html代码
 
-        $model = new UsersModel();
-        $model1 = new ReplyModel();
-        $model2 = new PublishModel();
-        $result6 = $model->status($username);
-        $status = $result6[0]['status'];
+        $user_model = new UsersModel();
+        $reply_model = new ReplyModel();
+        $post_model = new PostModel();
+        $status_result = $user_model->status($username);
+        $status = $status_result[0]['status'];
         //账号封禁中
         if ($status == "1") {
             $row['status'] = "3";
@@ -231,17 +246,14 @@ class Post extends Controller
             $row['msg'] = "账号封禁中，无法发帖或回复";
         } else {
             //查询用户id
-            $result = $model->idQuery($username);
-            $userid = $result[0];
+            $id_result = $user_model->idQuery($username);
+            $userid = $id_result[0];
             //查询楼层数并设定楼层值
-            $result1 = $model1->floor($id);
-            $floor = count($result1) + 1;
-            //查询现在的回复数
-            $result2 = $model1->replyNumber($id);
-            //回复数增加
-            $reply_number = count($result2) + 1;
+            $floor_result = $reply_model->floor($id);
+            $floor = count($floor_result) + 1;
+            $update = date("Y-m-d H:i:s");
             //更新数据库中回复数
-            $result3 = $model2->updateReply($id, $reply_number);
+            $reply_result = $post_model->updateReply($update, $id);
             $status = 0;
             $reply = array(
                 'post_id'    => $id,
@@ -253,25 +265,11 @@ class Post extends Controller
                 'created_at' => $created,
                 'updated_at' => $update
             );
-            $validations = [
-                "post_id"    => "IntGe:1",
-                "floor"      => "IntGe:1",
-                "Users_id"   => "IntGe:1",
-                "username"   => "Regexp:/^[a-zA-Z][a-zA-Z0-9_]{3,19}/",
-                "content"    => "StrLenGeLe:1,65535",
-                "status"     => "IntIn:0",
-                "updated_at" => "Date",
-                "created_at" => "Date",
-            ];
-            try {
-                Validation::validate($reply, $validations);
-            } catch (ValidationException $e) {
-            }
-            $re = $model1->insertReply($reply);
-            if ($re != '') {
-                $result4 = $model1->number($userid);
+            $insert_result = $reply_model->insertReply($reply);
+            if ($insert_result != '') {
+                $result4 = $reply_model->number($userid);
                 $num = count($result4);
-                $result5 = $model->updateReply($userid, $num);
+                $result5 = $user_model->updateReply($userid, $num);
                 $row['status'] = "1";
                 $row['err'] = "0";
                 $row['msg'] = "发表成功";
@@ -284,12 +282,16 @@ class Post extends Controller
         exit(json_encode($row));
     }
 
+    /**前端显示回复的帖子
+     *
+     * @return void
+     */
     public function listReply()
     {
         $id = $this->request->getPost('postId');
         try {
             Validation::validate($this->request->getPost(), [
-                "postId" =>"IntGe:1",
+                "postId" => "IntGe:1",
             ]);
         } catch (\Exception $e) {
             $e->getMessage();
@@ -297,27 +299,24 @@ class Post extends Controller
             $row['err'] = 'fail';
             $row['msg'] = $e->getMessage();
         }
-        $con = db_connect();
-        if (!$con) {
-            $row['status'] = "0";
-            $row['err'] = "数据库连接失败";
-            exit(json_encode($row));
-        }
-
-        $model = new ReplyModel();
-            $result = $model->queryData($id);
-            $row['status'] = "1";
-            $row['err'] = "0";
-            $row['data'] = $result;
-            exit(json_encode($row));
+        $reply_model = new ReplyModel();
+        $reply_result = $reply_model->queryData($id);
+        $row['status'] = "1";
+        $row['err'] = "0";
+        $row['data'] = $reply_result;
+        exit(json_encode($row));
     }
 
+    /**帖子置顶
+     *
+     * @return void
+     */
     public function top()
     {
         $id = $this->request->getPost('postId');
         try {
             Validation::validate($this->request->getPost(), [
-                "postId" =>"IntGe:1",
+                "postId" => "IntGe:1",
             ]);
         } catch (\Exception $e) {
             $e->getMessage();
@@ -325,20 +324,47 @@ class Post extends Controller
             $row['err'] = 'fail';
             $row['msg'] = $e->getMessage();
         }
-        $con = db_connect();
-        if (!$con) {
-            $row['status'] = "0";
-            $row['err'] = "数据库连接失败";
-            exit(json_encode($row));
-        }
 
-        $model = new PublishModel();
-        $result1 = $model->sequenceQuery();
-        $sequence = $result1[0]['sequence'] - 1;
-        $result = $model->top($id, $sequence);
+        $post_model = new PostModel();
+        $sequence_result = $post_model->sequenceQuery();
+        $sequence = $sequence_result[0]['sequence'] - 1;
+        $update = date("Y-m-d H:i:s");
+        $top_result = $post_model->top($id, $sequence, $update);
         $row['status'] = "1";
         $row['err'] = "0";
-        $row['data'] = $result;
+        $row['data'] = $top_result;
+        exit(json_encode($row));
+    }
+
+    /**搜索帖子
+     *
+     * @return void
+     */
+    public function search()
+    {
+        $title = $this->request->getPost('title');
+        $page = $this->request->getPost('page');
+        try {
+            Validation::validate($this->request->getPost(), [
+                "title" => "StrLenGeLe:1,50",
+                "page"  => "IntGe:1",
+            ]);
+        } catch (\Exception $e) {
+            $e->getMessage();
+            $row['status'] = '0';
+            $row['err'] = 'fail';
+            $row['msg'] = $e->getMessage();
+        }
+        $page = 20 * ($page - 1);
+        $post_model = new PostModel();
+        $search_result = $post_model->search($title, $page);
+        $statistics_result = $post_model->statistics($title);
+        $totalPage = count($statistics_result) / 20;
+        $totalPage = ceil($totalPage);
+        $row['status'] = "1";
+        $row['err'] = "0";
+        $row['data'] = $search_result;
+        $row['totalPage'] = $totalPage;
         exit(json_encode($row));
     }
 }

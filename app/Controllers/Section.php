@@ -15,18 +15,24 @@ class Section extends Controller
         header('Access-Control-Allow-Origin:*');
     }
 
-    //展示版块
+    /**展示版块
+     *
+     * @return void
+     */
     public function listSection()
     {
-        $model = new SectionModel();
-        $result = $model->listSection();
+        $section_model = new SectionModel();
+        $section_result = $section_model->listSection();
         $row['status'] = "1";
         $row['err'] = "0";
-        $row['data'] = $result;
+        $row['data'] = $section_result;
         exit(json_encode($row));
     }
 
-    //增加版块
+    /**增加版块
+     *
+     * @return void
+     */
     public function addSection()
     {
         $name = $this->request->getPost('name');
@@ -44,31 +50,24 @@ class Section extends Controller
         }
         $sequence = 0;
         $status = 0;
-        $model = new SectionModel();
+        $section_model = new SectionModel();
         $data = array(
             'name'        => $name,
             'information' => $info,
             'sequence'    => $sequence,
             'status'      => $status
         );
-        $validations = [
-            "name"        => "StrLenGeLe:1,50",
-            "information" => "StrLenGeLe:1,100",
-            "sequence"    => "IntGe:1",
-            "status"      => "IntIn:0",
-        ];
-        try {
-            Validation::validate($data, $validations);
-        } catch (ValidationException $e) {
-        }
-        $result = $model->addSection($data);
+        $section_result = $section_model->addSection($data);
         $row['status'] = "1";
         $row['err'] = "0";
-        $row['data'] = $result;
+        $row['data'] = $section_result;
         exit(json_encode($row));
     }
 
-    //删除版块
+    /**删除版块
+     *
+     * @return void
+     */
     public function deleteSection()
     {
         $id = $this->request->getPost('sectionId');
@@ -82,13 +81,18 @@ class Section extends Controller
             $row['err'] = 'fail';
             $row['msg'] = $e->getMessage();
         }
-        $model = new SectionModel();
-        $result = $model->deleteSection($id);
+        $section_model = new SectionModel();
+        $update = date("Y-m-d H:i:s");
+        $section_result = $section_model->deleteSection($update, $id);
         $row['status'] = "1";
         $row['err'] = "0";
         exit(json_encode($row));
     }
-    //编辑版块
+
+    /**编辑版块
+     *
+     * @return void
+     */
     public function editSection()
     {
         $id = $this->request->getPost('sectionId');
@@ -105,13 +109,18 @@ class Section extends Controller
             $row['err'] = 'fail';
             $row['msg'] = $e->getMessage();
         }
-        $model = new SectionModel();
-        $result = $model->editSection($id, $name);
+        $section_model = new SectionModel();
+        $update = date("Y-m-d H:i:s");
+        $section_result = $section_model->editSection($update, $id, $name);
         $row['status'] = "1";
         $row['err'] = "0";
         exit(json_encode($row));
     }
 
+    /**版块置顶
+     *
+     * @return void
+     */
     public function top()
     {
         $id = $this->request->getPost('sectionId');
@@ -126,13 +135,14 @@ class Section extends Controller
             $row['err'] = 'fail';
             $row['msg'] = $e->getMessage();
         }
-        $model = new SectionModel();
-        $result1 = $model->sequenceQuery();
-        $sequence = $result1[0]['sequence'] - 1;
-        $result = $model->top($id, $sequence);
+        $section_model = new SectionModel();
+        $sequence_result = $section_model->sequenceQuery();
+        $sequence = $sequence_result[0]['sequence'] - 1;
+        $update = date("Y-m-d H:i:s");
+        $top_result = $section_model->top($update, $id, $sequence);
         $row['status'] = "1";
         $row['err'] = "0";
-        $row['data'] = $result;
+        $row['data'] = $top_result;
         exit(json_encode($row));
     }
 }

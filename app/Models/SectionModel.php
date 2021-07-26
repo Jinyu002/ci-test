@@ -16,12 +16,16 @@ class SectionModel extends Model
         $this->db = \Config\Database::connect()->table('section');
     }
 
-    //把版块列出来
+    /**把版块列出来
+     *
+     * @return array
+     */
     public function listSection(): array
     {
         return $this->db->select('id')->select('name')->select('information')
             ->where('status', 0)->orderBy('sequence')->get(20, 0)->getResultArray();
     }
+
     public function addSection($data = '')
     {
         if ($data != '') {
@@ -30,26 +34,28 @@ class SectionModel extends Model
         return false;
     }
 
-    public function deleteSection($id = '')
+    public function deleteSection($update = '', $id = '')
     {
-        if ($id != '') {
-            return $this->db->set('status', 1)->where('id', $id)->update();
+        if ($id != '' && $update != '') {
+            return $this->db->set('status', 'status+1', false)
+                ->set('updated_at', $update)->where('id', $id)->update();
         }
         return false;
     }
 
-    public function editSection($id = '', $name = '')
+    public function editSection($update = '', $id = '', $name = '')
     {
-        if ($id != '' && $name != '') {
+        if ($id != '' && $name != '' && $update != '') {
             return $this->db->set('name', $name)->where('id', $id)->update();
         }
         return false;
     }
 
-    public function top($id = '', $sequence = '')
+    public function top($update = '', $id = '', $sequence = '')
     {
-        if ($id != '' && $sequence != '') {
-            return $this->db->set('sequence', $sequence)->where('id', $id)
+        if ($id != '' && $sequence != '' && $update != '') {
+            return $this->db->set('sequence', $sequence)
+                ->set('updated_at', $update)->where('id', $id)
                 ->update();
         }
         return false;

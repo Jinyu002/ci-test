@@ -31,14 +31,7 @@ class ReplyModel extends Model
         }
         return false;
     }
-    public function replyNumber($id = '')
-    {
-        if ($id != '') {
-            return $this->db->select()->where('post_id', $id)->get()
-                ->getResultArray();
-        }
-        return false;
-    }
+
     public function queryData($id = '')
     {
         if ($id != '') {
