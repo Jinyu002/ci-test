@@ -95,7 +95,8 @@ class Post extends Controller
         exit(json_encode($row));
     }
 
-    /**将帖子在主页显示
+    /**
+     * 将帖子在主页显示
      *
      * @return void
      */
@@ -112,9 +113,9 @@ class Post extends Controller
             $row['err'] = 'fail';
             $row['msg'] = $e->getMessage();
         }
-        $page = 20 * ($page - 1);
+        $offset = 20 * ($page - 1);
         $post_model = new PostModel();
-        $queryData_result = $post_model->queryData($page);
+        $queryData_result = $post_model->queryData($offset);
         $statistics_result = $post_model->statistics();
         $totalPage = count($statistics_result) / 20;
         $totalPage = ceil($totalPage);
@@ -125,7 +126,8 @@ class Post extends Controller
         exit(json_encode($row));
     }
 
-    /**帖子详情
+    /**
+     * 帖子详情
      *
      * @return void
      */
@@ -150,7 +152,8 @@ class Post extends Controller
         exit(json_encode($row));
     }
 
-    /**删除帖子
+    /**
+     * 删除帖子
      *
      * @return void
      */
@@ -175,7 +178,8 @@ class Post extends Controller
         exit(json_encode($row));
     }
 
-    /**编辑帖子
+    /**
+     * 编辑帖子
      *
      * @return void
      */
@@ -196,13 +200,19 @@ class Post extends Controller
         }
         $post_model = new PostModel();
         $update = date("Y-m-d H:i:s");
-        $post_result = $post_model->editPost($update, $content, $id);
+//        $post_result = $post_model->editPost($update, $content, $id);
+        $data = array(
+            'updated_at' => $update,
+            'content' => $content,
+        );
+        $post_result = $post_model->updateStatistics($data, $id);
         $row['status'] = "1";
         $row['err'] = "0";
         exit(json_encode($row));
     }
 
-    /**回复帖子
+    /**
+     * 回复帖子
      *
      * @return void
      */
@@ -282,7 +292,8 @@ class Post extends Controller
         exit(json_encode($row));
     }
 
-    /**前端显示回复的帖子
+    /**
+     * 前端显示回复的帖子
      *
      * @return void
      */
@@ -307,7 +318,8 @@ class Post extends Controller
         exit(json_encode($row));
     }
 
-    /**帖子置顶
+    /**
+     * 帖子置顶
      *
      * @return void
      */
@@ -329,14 +341,19 @@ class Post extends Controller
         $sequence_result = $post_model->sequenceQuery();
         $sequence = $sequence_result[0]['sequence'] - 1;
         $update = date("Y-m-d H:i:s");
-        $top_result = $post_model->top($id, $sequence, $update);
+        $data = array(
+            'sequence'   => $sequence,
+            'updated_at' => $update
+        );
+        $top_result = $post_model->updateStatistics($data, $id);
         $row['status'] = "1";
         $row['err'] = "0";
         $row['data'] = $top_result;
         exit(json_encode($row));
     }
 
-    /**搜索帖子
+    /**
+     * 搜索帖子
      *
      * @return void
      */
@@ -355,10 +372,10 @@ class Post extends Controller
             $row['err'] = 'fail';
             $row['msg'] = $e->getMessage();
         }
-        $page = 20 * ($page - 1);
+        $offset = 20 * ($page - 1);
         $post_model = new PostModel();
-        $search_result = $post_model->search($title, $page);
-        $statistics_result = $post_model->statistics($title);
+        $search_result = $post_model->search($title, $offset);
+        $statistics_result = $post_model->searchNum($title);
         $totalPage = count($statistics_result) / 20;
         $totalPage = ceil($totalPage);
         $row['status'] = "1";

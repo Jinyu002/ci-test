@@ -15,7 +15,8 @@ class Users extends Controller
         date_default_timezone_set("Asia/Shanghai");
     }
 
-    /**注册
+    /**
+     * 注册
      *
      * @return void
      */
@@ -103,7 +104,8 @@ class Users extends Controller
         exit(json_encode($row));
     }
 
-    /**登录
+    /**
+     * 登录
      *
      * @return void
      */
@@ -175,7 +177,8 @@ class Users extends Controller
         exit(json_encode($row));
     }
 
-    /**用户发帖回帖数量
+    /**
+     * 用户发帖回帖数量
      *
      * @return void
      */
@@ -200,7 +203,8 @@ class Users extends Controller
         exit(json_encode($row));
     }
 
-    /**在管理员处展示用户
+    /**
+     * 在管理员处展示用户
      *
      * @return void
      */
@@ -214,7 +218,8 @@ class Users extends Controller
         exit(json_encode($row));
     }
 
-    /**封禁用户
+    /**
+     * 封禁用户
      *
      * @return void
      */
@@ -238,7 +243,8 @@ class Users extends Controller
         exit(json_encode($row));
     }
 
-    /**退出登录
+    /**
+     * 退出登录
      *
      * @return void
      */

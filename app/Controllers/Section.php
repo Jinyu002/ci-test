@@ -15,7 +15,8 @@ class Section extends Controller
         header('Access-Control-Allow-Origin:*');
     }
 
-    /**展示版块
+    /**
+     * 展示版块
      *
      * @return void
      */
@@ -29,7 +30,8 @@ class Section extends Controller
         exit(json_encode($row));
     }
 
-    /**增加版块
+    /**
+     * 增加版块
      *
      * @return void
      */
@@ -64,7 +66,8 @@ class Section extends Controller
         exit(json_encode($row));
     }
 
-    /**删除版块
+    /**
+     * 删除版块
      *
      * @return void
      */
@@ -89,7 +92,8 @@ class Section extends Controller
         exit(json_encode($row));
     }
 
-    /**编辑版块
+    /**
+     * 编辑版块
      *
      * @return void
      */
@@ -111,13 +115,18 @@ class Section extends Controller
         }
         $section_model = new SectionModel();
         $update = date("Y-m-d H:i:s");
-        $section_result = $section_model->editSection($update, $id, $name);
+        $data = array(
+            'updated_at' => $update,
+            'name'       => $name
+        );
+        $section_result = $section_model->updateStatistics($data, $id);
         $row['status'] = "1";
         $row['err'] = "0";
         exit(json_encode($row));
     }
 
-    /**版块置顶
+    /**
+     * 版块置顶
      *
      * @return void
      */
@@ -139,7 +148,11 @@ class Section extends Controller
         $sequence_result = $section_model->sequenceQuery();
         $sequence = $sequence_result[0]['sequence'] - 1;
         $update = date("Y-m-d H:i:s");
-        $top_result = $section_model->top($update, $id, $sequence);
+        $data = array(
+            'updated_at' => $update,
+            'sequence'   => $sequence,
+        );
+        $top_result = $section_model->updateStatistics($data, $id);
         $row['status'] = "1";
         $row['err'] = "0";
         $row['data'] = $top_result;

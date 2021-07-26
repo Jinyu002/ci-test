@@ -37,12 +37,12 @@ class PostModel extends Model
         return false;
     }
 
-    public function queryData($page): array
+    public function queryData($offset): array
     {
         return $this->db->select('id')->select('username')->select('title')
             ->select('created_at')->select('content')->select('sequence')
             ->select('reply_number')->where('status', 0)->orderBy('sequence')
-            ->get(20, $page)->getResultArray();
+            ->get(20, $offset)->getResultArray();
     }
 
     public function statistics(): array
@@ -62,18 +62,16 @@ class PostModel extends Model
     public function postDelete($updated_at = '', $id = '')
     {
         if ($id != '' && $updated_at != '') {
-            return $this->db->set('status', 'status+1', false)
+            return $this->db->set('status', 1)
                 ->set('updated_at', $updated_at)->where('id', $id)->update();
         }
         return false;
     }
 
-    public function editPost($updated_at = '', $content = '', $id = '')
+    public function updateStatistics($data = '', $id = '')
     {
-        if ($content != '' && $updated_at != '') {
-            return $this->db->set('content', $content)
-                ->set('updated_at', $updated_at)->where('id', $id)
-                ->update();
+        if ($data != '' && $id != '') {
+            return $this->db->set($data)->where('id', $id)->update();
         }
         return false;
     }
@@ -97,28 +95,18 @@ class PostModel extends Model
         return false;
     }
 
-    public function top($id = '', $sequence = '', $updated_at = '')
-    {
-        if ($id != '' && $sequence != '' && $updated_at != '') {
-            return $this->db->set('sequence', $sequence)
-                ->set('updated_at', $updated_at)->where('id', $id)
-                ->update();
-        }
-        return false;
-    }
-
     public function sequenceQuery(): array
     {
         return $this->db->selectMin('sequence')->get(1, 0)->getResultArray();
     }
 
-    public function search($title, $page): array
+    public function search($title, $offset): array
     {
         return $this->db->select('id')->select('username')->select('title')
             ->select('created_at')->select('content')->select('sequence')
             ->select('reply_number')->like('title', $title)->where('status', 0)
             ->orderBy('sequence')
-            ->get(20, $page)->getResultArray();
+            ->get(20, $offset)->getResultArray();
     }
 
     public function searchNum($title): array

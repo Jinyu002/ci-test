@@ -37,29 +37,36 @@ class SectionModel extends Model
     public function deleteSection($update = '', $id = '')
     {
         if ($id != '' && $update != '') {
-            return $this->db->set('status', 'status+1', false)
+            return $this->db->set('status', 1)
                 ->set('updated_at', $update)->where('id', $id)->update();
         }
         return false;
     }
 
-    public function editSection($update = '', $id = '', $name = '')
+    public function updateStatistics($data, $id)
     {
-        if ($id != '' && $name != '' && $update != '') {
-            return $this->db->set('name', $name)->where('id', $id)->update();
+        if ($data != '' && $id != '') {
+            return $this->db->set($data)->where('id', $id)->update();
         }
         return false;
     }
-
-    public function top($update = '', $id = '', $sequence = '')
-    {
-        if ($id != '' && $sequence != '' && $update != '') {
-            return $this->db->set('sequence', $sequence)
-                ->set('updated_at', $update)->where('id', $id)
-                ->update();
-        }
-        return false;
-    }
+//    public function editSection($update = '', $id = '', $name = '')
+//    {
+//        if ($id != '' && $name != '' && $update != '') {
+//            return $this->db->set('name', $name)->where('id', $id)->update();
+//        }
+//        return false;
+//    }
+//
+//    public function top($update = '', $id = '', $sequence = '')
+//    {
+//        if ($id != '' && $sequence != '' && $update != '') {
+//            return $this->db->set('sequence', $sequence)
+//                ->set('updated_at', $update)->where('id', $id)
+//                ->update();
+//        }
+//        return false;
+//    }
 
     public function sequenceQuery(): array
     {
